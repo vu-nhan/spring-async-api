@@ -20,12 +20,12 @@ public class TestController {
     @RequestMapping(value = "/")
     public String execute(@RequestParam("name") String name) {
         restService.findByName(name);
-//
-//        log.info("Start Execute API in thread: {}", Thread.currentThread().getName());
-//        CompletableFuture.runAsync(() -> {
-//            log.info("Start Call Async API in thread: {}", Thread.currentThread().getName());
-//            restService.findByName(name);
-//        });
+
+        log.info("Start Execute API in thread: {}", Thread.currentThread().getName());
+        CompletableFuture.runAsync(() -> {
+            log.info("Start Call Async API in thread: {}", Thread.currentThread().getName());
+            restService.findByName(name);
+        });
 
         return "OK";
     }
