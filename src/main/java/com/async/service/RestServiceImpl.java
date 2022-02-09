@@ -1,7 +1,5 @@
 package com.async.service;
 
-import com.async.dto.ApiResponse;
-import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,9 +29,11 @@ public class RestServiceImpl implements RestService {
         String url = String.format("%s/%s", PARTNER_URL, FIND_BY_NAME);
         try {
             String response = restTemplate.getForObject(url, String.class);
+            log.info("FindByName successfully with response: {}", response);
+
             DATA_LIST.add(response);
         } catch (Exception ex) {
-            log.error(ex.getMessage());
+            log.info("FindByName failed with error: {}", ex.getMessage());
         }
     }
 }
